@@ -1,0 +1,12 @@
+{
+  "name": "Sistema de Facturación",
+  "short_name": "Facturación",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#e3f2fd",
+  "theme_color": "#4CAF50",
+  "icons": [
+    { "src": "facturas/icon-512x512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "images/icon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
