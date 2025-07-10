@@ -1,0 +1,127 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e3f2fd; /* Azul claro */
+    color: #0d47a1; /* Azul oscuro */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Títulos */
+h1, h2, h3 {
+    color: #0d47a1;
+}
+
+/* Secciones */
+section {
+    background-color: #ffffff;
+    border: 1px solid #90caf9;
+    padding: 20px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Inputs y selects */
+input, select {
+    width: 90%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px auto;
+    border: 1px solid #64b5f6;
+    border-radius: 6px;
+    display: block;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Botones */
+button {
+    background-color: #1976d2;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    border: none;
+    padding: 12px 18px;
+    margin-top: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1565c0;
+}
+
+/* Listas */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+li {
+    margin: 5px 0;
+    padding: 8px;
+    background-color: #bbdefb;
+    border-radius: 6px;
+}
+
+/* Factura resumen */
+#resumen_factura {
+    background-color: #e3f2fd;
+    border: 2px solid #64b5f6;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 700px;
+    box-shadow: 0 4px 8px rgba(0, 0, 100, 0.1);
+}
+
+#resumen_factura table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+#resumen_factura th, #resumen_factura td {
+    border: 1px solid #90caf9;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+#resumen_factura th {
+    background-color: #1976d2;
+    color: white;
+}
+
+/* Encabezado */
+div[style*="text-align: center"] {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+}
+
+/* Imágenes */
+img {
+    max-width: 200px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+/* Botones verdes personalizados */
+.btn-verde {
+    background-color: #43a047; /* Verde medio */
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 12px 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 100, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s;
+}

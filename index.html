@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FACTURA PWA</title>
+  <link rel="stylesheet" href="./public/css/estilos.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#00008B" />
+  <link rel="icon" href="factura/icon-192x192.png" />
+</head>
+<body>
+  <div style="text-align: left; margin: 20px;">
+    <h1>Sistema de Facturación</h1>
+  </div>
+  <section>
+    <h2>REGISTRO DE CLIENTES</h2>
+    <input type="text" id="nombre_cliente" placeholder="NOMBRES" />
+    <input type="text" id="cedula_cliente" placeholder="CÉDULA" />
+    <input type="text" id="direccion_cliente" placeholder="DIRECCIÓN" />
+    <button onclick="agregarCliente()">Agregar Cliente</button>
+    <ul id="lista_clientes"></ul>
+  </section>
+  <section>
+    <h2>REGISTRO DE PRODUCTOS</h2>
+    <input type="text" id="nombre_producto" placeholder="NOMBRE" />
+    <input type="number" id="precio_producto" placeholder="PRECIO" />
+    <button id="btn_producto" onclick="agregarProducto()">Agregar Producto</button>
+    <ul id="lista_productos"></ul>
+  </section>
+  <section>
+    <h2>GENERAR FACTURA</h2>
+    <select id="cliente_factura"></select><br />
+    <select id="producto_factura"></select>
+    <input type="number" id="cantidad_producto" placeholder="CANTIDAD" />
+    <button onclick="agregarItemFactura()">Agregar Producto a Factura</button>
+    <ul id="lista_items_factura"></ul>
+    <p id="total_factura"></p>
+    <button onclick="guardarFactura()">Guardar Factura</button>
+  </section>
+  <section id="resumen_factura" style="display:none; margin-top:20px;">
+    <h3>RESUMEN DE FACTURAS</h3>
+    <p><strong>Cliente:</strong> <span id="resumen_cliente"></span></p>
+    <p><strong>Fecha:</strong> <span id="resumen_fecha"></span></p>
+    <table border="1" cellpadding="5" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="resumen_items"></tbody>
+    </table>
+    <p><strong>Total:</strong> $<span id="resumen_total"></span></p>
+  </section>
+  <script src="./public/js/clientes.js"></script>
+  <script src="./public/js/productos.js"></script>
+  <script src="./public/js/factura.js"></script>
+  <script src="./public/js/app.js"></script>
+</body>
+</html>
