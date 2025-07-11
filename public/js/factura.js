@@ -1,3 +1,94 @@
+// Creamos una clase para gestionar facturas, productos y clientes desde el localStorage.
+class FacturaService {
+    static obtenerFacturas() {
+        const datos = localStorage.getItem("facturas");
+        return datos ? JSON.parse(datos) : [];
+    }
+
+    static guardarFacturas(facturas) {
+        localStorage.setItem("facturas", JSON.stringify(facturas));
+    }
+
+    // Creamos un ID único basado en la fecha actual.
+    static generarID() {
+        return Date.now().toString();
+    }
+
+    static obtenerProductos() {
+        const datos = localStorage.getItem("productos");
+        return datos ? JSON.parse(datos) : [];
+    }
+
+    static obtenerClientes() {
+        const datos = localStorage.getItem("clientes");
+        return datos ? JSON.parse(datos) : [];
+    }
+}
+
+// Creamos un arreglo donde se van a guardar los productos agregados a la factura.
+let itemsFactura = [];
+
+// Agregamos un producto con su cantidad a la factura.
+function agregarItemFactura() {
+    const idProducto = document.getElementById("producto_factura").value;
+    const cantidad = parseInt(document.getElementById("cantidad_producto").value);
+
+    // validación básica
+    if (!idProducto || isNaN(cantidad) || cantidad <= 0) {
+        alert("Es obligatorio seleccionar un producto y una cantidad válida.");
+        return;
+    }
+
+    const productos = FacturaService.obtenerProductos();
+    const producto = productos.find(p => p.id === idProducto);
+
+    if (!producto) {
+        alert("Producto no encontrado.");
+        return;
+    }
+
+    // Calculamos el subtotal del producto y lo añadimos a la factura.
+    const subtotal = producto.precio * cantidad;
+    itemsFactura.push({
+        idProducto,
+        cantidad,
+        subtotal
+    });
+
+    mostrarItemsFactura(); // Actualizamos la lista resultante en la pantalla.
+    document.getElementById("cantidad_producto").value = ""; // Limpiamos el campo de la cantidad de los productos.
+}
+
+// Mostramos los productos agregados y el valor total de la factura.
+function mostrarItemsFactura() {
+    const lista = document.getElementById("lista_items_factura");
+    // Usar 'totalTexto' que es la variable declarada
+    const totalTexto = document.getElementById("total_factura");
+    lista.innerHTML = "";
+
+    let total = 0;
+
+    // Recorremos los ítems para mostrarlos y hacer el cálculo del total.
+    itemsFactura.forEach(item => {
+        const producto = FacturaService.obtenerProductos().find(p => p.id === item.idProducto);
+        const li = document.createElement("li");
+        // Añadir verificación para 'producto' por robustez 
+        const nombreProducto = producto ? producto.nombre : "Producto desconocido";
+        li.textContent = `${nombreProducto} x ${item.cantidad} = $${item.subtotal.toFixed(2)}`;
+        lista.appendChild(li);
+
+        total += item.subtotal;
+    });
+
+    // Mostramos el total final de la factura.
+    //  Usar 'totalTexto' y añadir verificación 
+    if (totalTexto) {
+        totalTexto.textContent = `Total: $${total.toFixed(2)}`;
+    } else {
+        console.error("El elemento con id 'total_factura' no se encontró en el DOM. Asegúrate de que existe en index.html.");
+    }
+}
+
 // Creamos la función para guardar la información de la factura en base a los clientes y productos.
 function guardarFactura() {
     // Definimos el cliente respectivo para la factura.
@@ -71,90 +162,3 @@ function mostrarResumenFactura(factura) {
 document.addEventListener("DOMContentLoaded", () => {
     mostrarItemsFactura();
 });
-
-// Creamos una clase para gestionar los productos desde el localStorage.
-class ProductoService {
-    static obtenerProductos() {
-        return JSON.parse(localStorage.getItem("productos")) || [];
-    }
-
-    static guardarProductos(productos) {
-        localStorage.setItem("productos", JSON.stringify(productos));
-    }
-
-    static generarID() {
-        return Date.now().toString();
-    }
-}
-
-// Creamos la función que va a servir para agregar cualquier producto en el aplicativo.
-function agregarProducto() {
-    const nombre = document.getElementById("nombre_producto").value.trim();
-    const precio = parseFloat(document.getElementById("precio_producto").value);
-    // Especificamos una invalidación si no existen datos para el producto.
-    if (!nombre || isNaN(precio) || precio <= 0) {
-        alert("Es obligatorio ingresar los datos del producto.");
-        return;
-    }
-    // Definimos los datos de los productos.
-    const productos = ProductoService.obtenerProductos();
-    productos.push({
-        id: ProductoService.generarID(),
-        nombre,
-        precio
-    });
-
-    ProductoService.guardarProductos(productos);
-    mostrarProductos();
-
-
-    // Si ya se ha ingresado un producto, ejecutamos el operador encargado de limpiar los campos, para poder ingresar mas productos.
-    limpiarCamposProducto();
-}
-
-// Definimos la función encargada de limpiar los productos una vez que ya hayan sido ingresados.
-function limpiarCamposProducto() {
-    document.getElementById("nombre_producto").value = "";
-    document.getElementById("precio_producto").value = "";
-}
-
-// Establecemos la función que va a mostrar la lista de los productos.
-function mostrarProductos() {
-    const lista = document.getElementById("lista_productos");
-    const select = document.getElementById("producto_factura");
-    lista.innerHTML = "";
-    select.innerHTML = "";
-
-    const productos = ProductoService.obtenerProductos();
-    productos.forEach(producto => {
-        const li = document.createElement("li");
-        // Definimos el texto del producto que haya sido ingresado.
-        li.textContent = `${producto.nombre} - $${producto.precio.toFixed(2)}`;
-
-        // Definimos un botón para que el usuario pueda editar a un producto que ya haya sido ingresado.
-        const btnEditar = document.createElement("button");
-        btnEditar.textContent = "Editar";
-        btnEditar.style.marginLeft = "10px";
-        btnEditar.onclick = () => editarProducto(producto.id);
-
-        // Establecemos un botón para eliminar a un producto que ya haya sido ingresado.
-        const btnEliminar = document.createElement("button");
-        btnEliminar.textContent = "Eliminar";
-        btnEliminar.style.marginLeft = "5px";
-        btnEliminar.onclick = () => eliminarProducto(producto.id);
-        // Definimos los botones implementados dentro de la lista li.
-        li.appendChild(btnEditar);
-        li.appendChild(btnEliminar);
-
-        lista.appendChild(li);
-
-        // Establecemos una opción para seleccionar el identificador del producto.
-        const option = document.createElement("option");
-        option.value = producto.id;
-        option.textContent = producto.nombre;
-        select.appendChild(option);
-    });
-}
-
-
-

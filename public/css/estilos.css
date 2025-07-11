@@ -1,7 +1,7 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #e3f2fd; /* Azul claro */
-    color: #0d47a1; /* Azul oscuro */
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f3e5f5; /* Lila claro */
+    color: #4a148c; /* Púrpura oscuro */
     margin: 0;
     padding: 20px;
     display: flex;
@@ -11,19 +11,19 @@ body {
 
 /* Títulos */
 h1, h2, h3 {
-    color: #0d47a1;
+    color: #4a148c;
 }
 
 /* Secciones */
 section {
     background-color: #ffffff;
-    border: 1px solid #90caf9;
+    border: 1px solid #ce93d8;
     padding: 20px;
     margin-bottom: 30px;
     width: 100%;
     max-width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Inputs y selects */
@@ -32,28 +32,30 @@ input, select {
     max-width: 400px;
     padding: 10px;
     margin: 10px auto;
-    border: 1px solid #64b5f6;
+    border: 1px solid #ba68c8;
     border-radius: 6px;
     display: block;
     box-sizing: border-box;
     font-size: 16px;
+    background-color: #f8f1fb;
 }
 
 /* Botones */
 button {
-    background-color: #1976d2;
-    color: rgb(255, 255, 255);
+    background-color: #8e24aa;
+    color: white;
     font-weight: bold;
     border: none;
     padding: 12px 18px;
     margin-top: 10px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s;
 }
 
 button:hover {
-    background-color: #1565c0;
+    background-color: #6a1b9a;
+    transform: scale(1.05);
 }
 
 /* Listas */
@@ -66,18 +68,18 @@ ul {
 li {
     margin: 5px 0;
     padding: 8px;
-    background-color: #bbdefb;
+    background-color: #e1bee7;
     border-radius: 6px;
 }
 
 /* Factura resumen */
 #resumen_factura {
-    background-color: #e3f2fd;
-    border: 2px solid #64b5f6;
-    border-radius: 10px;
+    background-color: #f3e5f5;
+    border: 2px solid #ba68c8;
+    border-radius: 12px;
     padding: 20px;
     max-width: 700px;
-    box-shadow: 0 4px 8px rgba(0, 0, 100, 0.1);
+    box-shadow: 0 4px 8px rgba(100, 0, 100, 0.1);
 }
 
 #resumen_factura table {
@@ -87,14 +89,14 @@ li {
 }
 
 #resumen_factura th, #resumen_factura td {
-    border: 1px solid #90caf9;
+    border: 1px solid #ce93d8;
     padding: 10px;
     text-align: center;
     font-size: 14px;
 }
 
 #resumen_factura th {
-    background-color: #1976d2;
+    background-color: #8e24aa;
     color: white;
 }
 
@@ -110,11 +112,12 @@ img {
     max-width: 200px;
     margin-top: 10px;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Botones verdes personalizados */
 .btn-verde {
-    background-color: #43a047; /* Verde medio */
+    background-color: #388e3c; /* Verde */
     color: white;
     font-weight: bold;
     border: none;
@@ -125,3 +128,5 @@ img {
     box-shadow: 0 4px 6px rgba(0, 100, 0, 0.2);
     transition: background-color 0.3s ease, transform 0.2s;
 }
+
+

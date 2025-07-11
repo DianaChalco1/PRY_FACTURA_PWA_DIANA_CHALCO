@@ -6,7 +6,7 @@
   "background_color": "#e3f2fd",
   "theme_color": "#4CAF50",
   "icons": [
-    { "src": "facturas/icon-512x512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "images/icon-512x512.png", "sizes": "512x512", "type": "image/png" }
+    { "src": "icons/icons-512x512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icons-192x192.png", "sizes": "192x192", "type": "image/png" }
   ]
 }

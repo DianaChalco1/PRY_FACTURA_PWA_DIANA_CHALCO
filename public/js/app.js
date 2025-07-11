@@ -9,6 +9,3 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
-
-
-
