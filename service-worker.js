@@ -8,8 +8,8 @@ const urlsToCache = [
   './public/js/productos.js',
   './public/js/factura.js',
   './public/js/app.js',
-  './icons/icon-192x192.png', // Ícono 192x192 añadido a la caché 
-  './icons/icon-512x512.png',  // Ícono 512x512 añadido a la caché 
+  './icons/icon-512x512.png', // Ícono 512x512 añadido a la caché
+  './icons/icons-512x512.png',  // Ícono 512x512 añadido a la caché
 ];
 
 self.addEventListener('install', function(event) {

@@ -1,12 +1,16 @@
 {
   "name": "Sistema de Facturación",
-  "short_name": "Facturación",
+  "short_name": "PWAFacturación",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#e3f2fd",
-  "theme_color": "#4CAF50",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
-    { "src": "icons/icons-512x512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "icons/icons-192x192.png", "sizes": "192x192", "type": "image/png" }
+    { "src": "icons/icon-512x512.png", 
+      "sizes": "512x512", 
+      "type": "image/png" },
+    { "src": "icons/icon-512x512.png", 
+      "sizes": "512x512", 
+      "type": "image/png" }
   ]
 }
